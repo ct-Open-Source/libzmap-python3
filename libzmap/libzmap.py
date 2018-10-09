@@ -38,7 +38,7 @@ class ZmapProcess(Thread):
         self.__is_windows = platform.system() == 'Windows'
 
         (self.DONE, self.READY, self.RUNNING,
-         self.CANCELLED, self.FAILED) = list(range(5))
+         self.CANCELLED, self.FAILED) = range(5)
 
         self.__state = self.RUNNING
 
@@ -89,7 +89,7 @@ class ZmapProcess(Thread):
             self.__zmap_proc = subprocess.Popen(args=shlex.split(cmdline), stdout=subprocess.PIPE,
                                                 stderr=subprocess.PIPE,
                                                 universal_newlines=True, bufsize=0)
-        except OSError as e:
+        except OSError, e:
             print(e)
             raise EnvironmentError(1, "zmap is not installed or could not be found in system path")
 
@@ -197,7 +197,7 @@ class ZmapProcess(Thread):
 def main():
     proc = ZmapProcess(targets='101.200.188.97/20', options='-B 100M', probe_module='icmp_echoscan')
     for obj in proc.run():
-        print(vars(obj))
+        print vars(obj)
 
 
 if __name__ == '__main__':
