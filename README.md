@@ -1,5 +1,5 @@
-python-libzmap
-==============
+libzmap-python3
+===============
 
 ZMap is an open-source network scanner that enables researchers to easily perform Internet-wide network studies. 
 python-libzmap is a zmap-python binding, with full scan option support(tcp_synscan, icmp_echoscan, icmp_echo_time, udp, ntp, upnp)
@@ -14,11 +14,11 @@ Install
 --------
 
 ```bash
-git clone https://github.com/gushitong/python-libzmap
+git clone git@github.com:d00t-b-res/libzmap-python3.git
 ```
 
 ```bash
-cd python-libzmap && python setup.py install
+cd libzmap-python3 && python3 setup.py install
 ```
 
 
@@ -54,7 +54,7 @@ Python Support
 
 The libzmap code is tested against the following python interpreters:
 
-- Python 2.7 (Test on ubuntu-15.10 with zmap-2.1.0);
+- Python 3.6 (Test on ubuntu-18.04 with zmap-2.1.1);
 
 
 About me
