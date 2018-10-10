@@ -21,6 +21,11 @@ git clone git@github.com:d00t-b-res/libzmap-python3.git
 cd libzmap-python3 && python3 setup.py install
 ```
 
+or
+
+```bash
+sudo pip3.6 install git+https://github.com/d00t-b-res/libzmap-python3
+```
 
 Use case
 -------
