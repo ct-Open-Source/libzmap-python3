@@ -1,7 +1,7 @@
 class TcpSyn(object):
 
     output_fields = (
-        'saddr-raw', 'daddr', 'daddr-raw', 'ipid', 'ttl', 'sport', 'dport', 'seqnum', 'acknum', 'window',
+        'saddr', 'saddr-raw', 'daddr', 'daddr-raw', 'ipid', 'ttl', 'sport', 'dport', 'seqnum', 'acknum', 'window',
         'classification', 'success', 'repeat', 'cooldown', 'timestamp-str', 'timestamp-ts', 'timestamp-us'
     )
 
