@@ -1,9 +1,9 @@
 class Upnp(object):
     output_fields = (
-        'saddr', 'saddr_raw', 'daddr', 'daddr_raw', 'ipid', 'ttl', 'classification', 'success', 'server', 'location',
+        'saddr', 'saddr-raw', 'daddr', 'daddr-raw', 'ipid', 'ttl', 'classification', 'success', 'server', 'location',
         'usn', 'st', 'ext', 'cache_control', 'x_user_agent', 'agent', 'date', 'sport', 'dport', 'icmp_responder',
-        'icmp_type', 'icmp_code', 'icmp_unreach_str', 'data', 'repeat', 'cooldown', 'timestamp_str', 'timestamp_ts',
-        'timestamp_us'
+        'icmp_type', 'icmp_code', 'icmp_unreach_str', 'data', 'repeat', 'cooldown', 'timestamp-str', 'timestamp-ts',
+        'timestamp-us'
     )
 
     def __init__(self, saddr, saddr_raw, daddr, daddr_raw, ipid, ttl, classification, success, server, location, usn,

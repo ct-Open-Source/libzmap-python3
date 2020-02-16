@@ -6,7 +6,7 @@ from setuptools import setup
 install_requires = []
 
 setup(name="libzmap",
-      version="v0.0.2",
+      version="v0.0.3",
       description="zmap binding for python",
       author="gushitong",
       author_email="gushitong@gmail.com",

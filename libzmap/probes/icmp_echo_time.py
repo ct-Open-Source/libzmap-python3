@@ -1,8 +1,8 @@
 class IcmpEchoTime(object):
     output_fields = (
-        'saddr', 'saddr_raw', 'daddr', 'daddr_raw', 'ipid', 'ttl', 'type', 'code', 'icmp_id', 'seq',
-        'sent_timestamp_ts', 'sent_timestamp_us', 'dst_raw', 'classification', 'success', 'repeat',
-        'cooldown', 'timestamp_str', 'timestamp_ts', 'timestamp_us'
+        'saddr', 'saddr-raw', 'daddr', 'daddr-raw', 'ipid', 'ttl', 'type', 'code', 'icmp-id', 'seq',
+        'sent-timestamp-ts', 'sent-timestamp-us', 'dst-raw', 'classification', 'success', 'repeat',
+        'cooldown', 'timestamp-str', 'timestamp-ts', 'timestamp-us'
     )
 
     def __init__(self, saddr, saddr_raw, daddr, daddr_raw, ipid, ttl, _type, code, icmp_id, seq, sent_timestamp_ts,
