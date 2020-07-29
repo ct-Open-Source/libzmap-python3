@@ -8,7 +8,7 @@ from .parser import ZmapParser
 
 
 class ZmapProcess(Thread):
-    def __init__(self, targets='127.0.0.1', port=80, probe_module=None, options=None, fqp=None, yield_raw=False):
+    def __init__(self, targets='127.0.0.1', port=80, probe_module=None, options=None, fqp=None, yield_raw=False, print_progress=False):
         """
 
         :param targets:
@@ -33,6 +33,7 @@ class ZmapProcess(Thread):
         self.__zmap_probe_module = probe_module if probe_module else 'tcp_synscan'
         self.__zmap_parser = ZmapParser(self.__zmap_probe_module)
         self.__yield_raw = yield_raw
+        self.__print_progress = print_progress
 
         # more reliable than just using os.name() (cygwin)
         self.__is_windows = platform.system() == 'Windows'
@@ -94,6 +95,9 @@ class ZmapProcess(Thread):
             raise EnvironmentError(1, "zmap is not installed or could not be found in system path")
 
         while self.__zmap_proc.poll() is None:
+            if self.__print_progress:
+                for streamline in iter(self.__zmap_proc.stderr.readline, ''):
+                    print(streamline.replace("\n", ""))
             for streamline in iter(self.__zmap_proc.stdout.readline, ''):
                 if self.__yield_raw:
                     yield streamline
