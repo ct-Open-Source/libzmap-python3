@@ -99,7 +99,7 @@ class ZmapProcess(Thread):
             if self.__print_progress:
                 for streamline in iter(self.__zmap_proc.stderr.readline, ''):
                     print(streamline.replace("\n", ""))
-            elif self.__yield_progress():
+            elif self.__yield_progress:
                 for streamline in iter(self.__zmap_proc.stderr.readline, ''):
                     yield streamline
             for streamline in iter(self.__zmap_proc.stdout.readline, ''):
