@@ -34,7 +34,7 @@ class ZmapProcess(Thread):
         self.__zmap_parser = ZmapParser(self.__zmap_probe_module)
         self.__yield_raw = yield_raw
         self.__print_progress = print_progress
-        self.__yield_progress = print_progress
+        self.__yield_progress = yield_progress
 
         # more reliable than just using os.name() (cygwin)
         self.__is_windows = platform.system() == 'Windows'
