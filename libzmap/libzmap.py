@@ -54,7 +54,6 @@ class ZmapProcess(Thread):
             self.__zmap_binary = self._whereis(self.__zmap_binary_name)
 
     def _whereis(self, program):
-
         """
         Protected method enabling the object to find the full path of a binary
         from its PATH environment variable.
@@ -70,7 +69,7 @@ class ZmapProcess(Thread):
         program = program + '.exe' if self.__is_windows else program
         for path in os.environ.get('PATH', '').split(split_char):
             if (os.path.exists(os.path.join(path, program)) and not
-            os.path.isdir(os.path.join(path, program))):
+                    os.path.isdir(os.path.join(path, program))):
                 return os.path.join(path, program)
         return None
 
@@ -89,19 +88,14 @@ class ZmapProcess(Thread):
         cmdline = self.get_commandline()
         try:
             self.__zmap_proc = subprocess.Popen(args=shlex.split(cmdline), stdout=subprocess.PIPE,
-                                                stderr=subprocess.PIPE,
+                                                stderr=subprocess.STDOUT,
                                                 universal_newlines=True, bufsize=0)
         except OSError as e:
             print(e)
-            raise EnvironmentError(1, "zmap is not installed or could not be found in system path")
+            raise EnvironmentError(
+                1, "zmap is not installed or could not be found in system path")
 
         while self.__zmap_proc.poll() is None:
-            if self.__print_progress:
-                for streamline in iter(self.__zmap_proc.stderr.readline, ''):
-                    print(streamline.replace("\n", ""))
-            elif self.__yield_progress:
-                for streamline in iter(self.__zmap_proc.stderr.readline, ''):
-                    yield streamline
             for streamline in iter(self.__zmap_proc.stdout.readline, ''):
                 if self.__yield_raw:
                     yield streamline
@@ -110,7 +104,7 @@ class ZmapProcess(Thread):
                     if obj:
                         yield obj
 
-        self.__stderr += self.__zmap_proc.stderr.read()
+        # self.__stderr += self.__zmap_proc.stderr.read()
         # print self.__stderr
         self.__zmap_rc = self.__zmap_proc.poll()
         if self.rc is None:
@@ -203,7 +197,8 @@ class ZmapProcess(Thread):
 
 
 def main():
-    proc = ZmapProcess(targets='101.200.188.97/20', options='-B 100M', probe_module='icmp_echoscan')
+    proc = ZmapProcess(targets='101.200.188.97/20',
+                       options='-B 100M', probe_module='icmp_echoscan')
     for obj in proc.run():
         print((vars(obj)))
 
